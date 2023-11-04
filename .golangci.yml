@@ -1,0 +1,103 @@
+---
+
+run:
+  timeout: 5m
+  skip-dirs:
+    - test
+    - mocks
+    - tools
+  skip-files:
+    - ".*_test.go"
+issues:
+  exclude:
+    - "Error return value of .((os\\.)?std(out|err)\\..*|.*Close|.*Flush|os\\.Remove(All)?|.*printf?|os\\.(Un)?Setenv). is not checked"
+
+  exclude-use-default: false
+
+linters:
+  disable-all: true
+  enable:
+    - bodyclose
+    - cyclop
+    # - deadcode
+    - dupl
+    - errcheck
+    - errorlint
+    - exhaustive
+    - goconst
+    - gocritic
+    - godot
+    - gocognit
+    - gofmt
+    - gofumpt
+    - goimports
+    - gomnd
+    - gomoddirectives
+    - gomodguard
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    # - ifshort
+    - importas
+    - ineffassign
+    - makezero
+    # - misspell
+    - nakedret
+    - nestif
+    # - noctx
+    - nolintlint
+    # - prealloc
+    - predeclared
+    - revive
+    - staticcheck
+    # - structcheck
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    # - varcheck
+    - whitespace
+    - wsl
+
+linters-settings:
+  cyclop:
+    max-complexity: 12
+    package-average: 0.0
+    skip-tests: false
+  dupl:
+    # tokens count to trigger issue, 150 by default
+    threshold: 200
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+  gocognit:
+    min-complexity: 17
+  goconst:
+    min-len: 3
+    min-occurrences: 3
+  gocritic:
+    enabled-tags:
+      - performance
+      - diagnostic
+      - style
+      - experimental
+      - opinionated
+  godot:
+    check-all: true
+  gosec:
+    excludes: ["G102"]
+  govet:
+    check-shadowing: true
+    enable-all: true
+  misspell:
+    locale: UK
+  nestif:
+    min-complexity: 7
+  nolintlint:
+    allow-unused: false
+    allow-leading-space: true
+    allow-no-explanation: []
+    require-explanation: true
+    require-specific: true
