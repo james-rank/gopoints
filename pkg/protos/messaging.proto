@@ -1,0 +1,33 @@
+syntax = "proto3";
+package Messaging;
+option go_package = "github.com/james-rank/points/pkg/messaging/protos";
+
+message Request {
+  enum Action {
+    ACTION_ADD = 0;
+    ACTION_REMOVE = 1;
+    ACTION_RESUME = 2;
+  }
+
+  enum PointType {
+    POINT_PAUSE = 0;
+    POINT_CRASH = 1;
+  }
+
+  Action action = 1;
+  string name = 2;
+  PointType type = 3;
+}
+
+message Reply {
+  enum Response {
+    RESPONSE_ACK = 0;
+    RESPONSE_NACK = 1;
+  }
+
+  Response response = 1;
+}
+
+message Notification {
+    string name = 1;
+}
