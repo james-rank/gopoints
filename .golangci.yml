@@ -8,6 +8,7 @@ run:
     - tools
   skip-files:
     - ".*_test.go"
+    - "mocks.go"
 issues:
   exclude:
     - "Error return value of .((os\\.)?std(out|err)\\..*|.*Close|.*Flush|os\\.Remove(All)?|.*printf?|os\\.(Un)?Setenv). is not checked"
